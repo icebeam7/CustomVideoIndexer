@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CustomVideoIndexer.Models.VideoResultClean>
+
+@{
+    ViewData["Title"] = "Video List";
+}
+
+<h1>Video List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Video</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td align="center">
+                <a asp-action="Details" asp-route-id="@item.id"><img src="@item.thumbnail"></a>
+                <br />
+                <b>@Html.DisplayFor(modelItem => item.name)</b>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

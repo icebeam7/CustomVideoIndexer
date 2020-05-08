@@ -1,0 +1,45 @@
+﻿@model CustomVideoIndexer.Models.VideoResultInsights
+
+@{
+    ViewData["Title"] = "Video Details";
+}
+
+<h1>Video Details</h1>
+
+<h3>@Model.Name</h3>
+
+<video controls width="600" height="400">
+    <source src="@Model.VideoUri" type="video/mp4">
+    Video tag is not supported in this browser.
+</video>
+
+<h3>Frames</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Frame</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Labels / <br/>Custom Labels</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.KeyFrameList)
+        {
+        <tr>
+            <td><img src="@item.Thumbnail" width="300" height="150"></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Labels)<br/>
+                <b>@Html.DisplayFor(modelItem => item.CustomLabel)</b>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
